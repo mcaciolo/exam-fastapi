@@ -2,3 +2,5 @@ __pycache__/
 .vscode/
 pipfile
 pipfile.lock
+Pipfile
+Pipfile.lock
