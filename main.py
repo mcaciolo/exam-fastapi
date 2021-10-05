@@ -33,11 +33,11 @@ df_questions = pd.read_csv('questions.csv')
 df_questions = df_questions.fillna('')
 
 #Verify authorization
-def verify_authorization(auth_header, auth_level):
-    if auth_header is None:
+def verify_authorization(Auth_header, auth_level):
+    if Auth_header is None:
         raise HTTPException(status_code=401, detail="No Authorization header")
     
-    username_password = auth_header.split(':')
+    username_password = Auth_header.split(':')
     if len(username_password) != 2:
         raise HTTPException(status_code=401, detail="Authorization header should be in the form username:password")
     if username_password[0] not in user_list:
@@ -76,7 +76,7 @@ qcm_responses = {
 def get_QCM(n_questions:Optional[Literal['5','10','20']] = '10', 
             use:Optional[str] = None, 
             subjects:Optional[str] = None,
-            auth_header:str = Header(None, description='username:password')):
+            Auth_header:str = Header(None, description='username:password')):
     """
     Generate a random QCM composed by n_questions, filtered basing on the use and a list of subjects. \n
     Minimum authorization : basic \n 
@@ -86,7 +86,7 @@ def get_QCM(n_questions:Optional[Literal['5','10','20']] = '10',
     -> If the number of questions are not specified, a QCM of 10 questions is provided \n
     """
 
-    verify_authorization(auth_header, 'basic')
+    verify_authorization(Auth_header, 'basic')
     
     #Filter on subject and use, if any
     if subjects is None:
