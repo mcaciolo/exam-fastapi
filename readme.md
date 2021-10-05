@@ -15,9 +15,9 @@ Pour lancer le serveur API depuis un environnement virtuel, suivez les étapes s
 
 * Lancez le serveur depuis l'environnement virtuel : ``pipenv run uvicorn main:api``
 
-* Vérifiez l'état de fonctionnement de l'API 
+* Vérifiez l'état de fonctionnement de l'API : ``curl -X 'GET' 'http://localhost:8000/status' -H 'accept: application/json' -H 'Auth-header: alice:wonderland'``
 
-Le serveur va se mettre à l'écoute du port 8000 de la machine locale !
+* Demandez votre premier QCM : ``curl -X 'GET' 'http://localhost:8000/QCM' -H 'accept: application/json' -H 'Auth-header: alice:wonderland'``
 
 ## Documentation
 
